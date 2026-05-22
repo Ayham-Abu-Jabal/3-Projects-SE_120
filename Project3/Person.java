@@ -15,6 +15,14 @@ abstract class Person {
         return id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+        public String getEmail() {
+        return email;
+    }
+
     public void displayInfo(){
         System.out.println("ID: " + id);
         System.out.println("name: " + name);
