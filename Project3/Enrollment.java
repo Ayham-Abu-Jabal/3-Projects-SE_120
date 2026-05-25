@@ -1,5 +1,4 @@
 package Project3;
-import java.sql.*;
 
 public class Enrollment {
     private double grade;

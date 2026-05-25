@@ -1,9 +1,9 @@
 package Project3;
 import java.sql.*;
 public class DatabaseConnector {
-    private static final String URL = "jdbc:postgresql://localhost:5432/StudentDB";
+    private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "LETSROCK2025";
+    private static final String PASSWORD = "HELLOWORLD";
 
     public static Connection connect(){// connects to the sql server
         Connection connection = null;
