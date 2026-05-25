@@ -15,6 +15,15 @@ public class Course {
         return courseCode;
     }
 
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    
+    public int getCreditHours() {
+        return creditHours;
+    }
+
     public void displayCourseInfo(){
         String courseInfo = switch (this.courseCode){
             case "SE120" -> "After completing this course, students will be equipped with the necessary skills and tools to write programs in Java based on a procedural and object-oriented approach. Topics of focus will include basic Java programming, conditional statements, strings, iteration, methods, arrays, creating classes, encapsulation, inheritance and polymorphism, abstract classes, packages, principles of object-oriented design, as well as exceptions and interfaces.";
