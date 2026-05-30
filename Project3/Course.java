@@ -31,5 +31,10 @@ public class Course {
             case "PHU124" -> "The material of this course requires knowledge of differential and integral calculus. The covered material includes the basics of electricity and magnetism, electromagnetic radiation, and optics.";
             default -> "Invalid Course";
         };
+
+        System.out.println("Course: " + courseTitle + " (" + courseCode + ")");
+        System.out.println("Credit Hours: " + creditHours);
+        System.out.println("Description : " + courseInfo);
+
     }
 }
