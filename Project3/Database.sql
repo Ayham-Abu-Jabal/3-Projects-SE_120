@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Course(
 CREATE TABLE IF NOT EXISTS Enrollment (
     studentId VARCHAR(10),
     courseCode VARCHAR(10),
-    grade DOUBLE PRECISION,
+    grade DOUBLE PRECISION CHECK (grade >= 0 AND grade <= 100),
     PRIMARY KEY (studentId, courseCode),
     FOREIGN KEY (studentId) REFERENCES Student(studentId) ON DELETE CASCADE,
     FOREIGN KEY (courseCode) REFERENCES Course(courseCode) ON DELETE CASCADE
