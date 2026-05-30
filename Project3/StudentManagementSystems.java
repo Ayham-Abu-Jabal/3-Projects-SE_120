@@ -1,10 +1,97 @@
 package Project3;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StudentManagementSystems {
 
+
+    private static ArrayList<Student> studentsAdded = new ArrayList<>();
+    private static ArrayList<Course> coursesAdded = new ArrayList<>();
+
+    public static ArrayList<Student> getStudentsAdded() {
+        return studentsAdded;
+    }
+
+    public static ArrayList<Course> getCoursesAdded() {
+        return coursesAdded;
+    }
+    
+    // Add (Memory only)
+    public static void addStudentInMemory(Student student) {
+        studentsAdded.add(student);
+        System.out.println("Student added to memory.");
+    }
+
+    // Search (Memory only)
+    public static Student searchStudentAdded(String studentId) {
+        for (Student student : studentsAdded) {
+            if (student.getStudentId().equals(studentId)) {
+                return student;
+            }
+        }
+        return null;
+    }
+
+    // Update (Memory only)
+    public static void updateStudentAdded(String studentId, String name, String email, String major) {
+        Student student = searchStudentAdded(studentId);
+        if (student != null) {
+            student.setName(name);
+            student.setEmail(email);
+            student.setMajor(major);
+            System.out.println("Student updated in memory.");
+        } else {
+            System.out.println("Student not found in memory.");
+        }
+    }
+
+    public static void displayStudentsAdded() {
+        System.out.println("\n--- Students Recently Added  ---");
+        for (Student student : studentsAdded) {
+            student.displayInfo(); 
+            System.out.println("Major: " + student.getMajor());
+            System.out.println("-------------------------");
+        }
+    }
+
+
+    public static void addCourseAdded(Course course) {
+        coursesAdded.add(course);
+        System.out.println("Course added to memory.");
+    }
+
+    public static Course searchCourseAdded(String courseCode) {
+        for (Course course : coursesAdded) {
+            if (course.getCourseCode().equals(courseCode)) {
+                return course;
+            }
+        }
+        return null;
+    }
+
+    public static void updateCourseAdded(String code, String title, int credits) {
+        Course course = searchCourseAdded(code);
+        if (course != null) {
+            course.setCourseTitle(title);
+            course.setCreditHours(credits);
+            System.out.println("Course updated in memory.");
+        } else {
+            System.out.println("Course not found in memory.");
+        }
+    }
+
+    public static void displayCoursesAdded() {
+    System.out.println("\n--- Courses Recently Added ---");
+    for (Course course : coursesAdded) {
+        course.displayCourseInfo();
+        System.out.println("-------------------------");
+    }
+}
+    
     public static void addStudent(Student student) {//adds student to student table in SQL
+        studentsAdded.add(student);
         if (isValidEmail(student.getEmail()) == false) {
             System.out.println("Error: Invalid email address '" + student.getEmail() + "''.");
             return;
@@ -53,6 +140,7 @@ public class StudentManagementSystems {
 
 
     public static void addCourse(Course course) {
+        coursesAdded.add(course);
         String sql = "INSERT INTO course (courseCode, courseTitle, creditHours) VALUES (?, ?, ?)";
         try (Connection connection = DatabaseConnector.connect();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)) {

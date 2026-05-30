@@ -19,9 +19,22 @@ abstract class Person {
         return name;
     }
 
-        public String getEmail() {
+    public String getEmail() {
         return email;
     }
+
+    public void setId(String id){
+        this.id = id;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setEmail(String email){
+        this.email = email;
+    }
+
 
     public void displayInfo(){
         System.out.println("ID: " + id);
