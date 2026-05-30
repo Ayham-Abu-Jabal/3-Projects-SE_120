@@ -113,13 +113,14 @@ public class Main {
                     System.out.print("Enter Student ID to delete: ");
                     String studentId = scanner.nextLine();
                     StudentManagementSystems.deleteStudent(studentId);
- 
                 } 
+
                 else if (choice == 4) {
                     System.out.print("Enter Course Code to delete: ");
                     String courseCode = scanner.nextLine();
                     StudentManagementSystems.deleteCourse(courseCode);
                 }
+
                  else if (choice == 5) {
                     System.out.print("Enter Student ID: ");
                     String studentId = scanner.nextLine();

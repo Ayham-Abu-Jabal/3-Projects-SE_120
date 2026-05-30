@@ -5,13 +5,13 @@ import java.sql.*;
 public class StudentManagementSystems {
 
     public static void addStudent(Student student) {//adds student to student table in SQL
-        String sql = "INSERT INTO student (studentId, name, email, major) VALUES (?, ?, ?, ?)";
-        try (Connection connection = DatabaseConnector.connect();
-                PreparedStatement preparedStatement = connection.prepareStatement(sql)){//sends the sql string to not use the raw data 
-            if (isValidEmail(student.getEmail()) == false) {
+        if (isValidEmail(student.getEmail()) == false) {
             System.out.println("Error: Invalid email address '" + student.getEmail() + "''.");
             return;
         }
+        String sql = "INSERT INTO student (studentId, name, email, major) VALUES (?, ?, ?, ?)";
+        try (Connection connection = DatabaseConnector.connect();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql)){//sends the sql string to not use the raw data 
 
             preparedStatement.setString(1, student.getStudentId());
             preparedStatement.setString(2, student.getName());
