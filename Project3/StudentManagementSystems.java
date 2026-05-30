@@ -100,7 +100,7 @@ public class StudentManagementSystems {
         try (Connection connection = DatabaseConnector.connect();
                 PreparedStatement preparedStatement = connection.prepareStatement(sql)){//sends the sql string to not use the raw data 
 
-            preparedStatement.setString(1, student.getStudentId());
+            preparedStatement.setString(1, student.getStudentId());//enters the values into the row
             preparedStatement.setString(2, student.getName());
             preparedStatement.setString(3, student.getEmail());  
             preparedStatement.setString(4, student.getMajor()); 
@@ -109,7 +109,7 @@ public class StudentManagementSystems {
             preparedStatement.close();//prevents memory leaks
             System.out.println("Student Added Successfully");
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();//stack trace shows you eveything that went wrong
         }
         catch(Exception e){
             System.out.println("Error: " + e);
@@ -319,7 +319,9 @@ public class StudentManagementSystems {
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, studentId);
             preparedStatement.setString(2, courseCode);
-            return preparedStatement.executeQuery().next();
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                return resultSet.next();//prevent dataleak
+            }
         } catch (SQLException e) {
             System.out.println("Error checking enrollment: " + e.getMessage());
             return false;
@@ -330,7 +332,9 @@ public class StudentManagementSystems {
         try (Connection connection = DatabaseConnector.connect();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, param);
-            return preparedStatement.executeQuery().next();
+        try (ResultSet resultSet = preparedStatement.executeQuery()) {
+            return resultSet.next();
+        }
         } catch (SQLException e) {
             System.out.println("Error checking existence: " + e.getMessage());
             return false;
