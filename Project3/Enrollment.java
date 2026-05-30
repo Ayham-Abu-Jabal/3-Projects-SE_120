@@ -22,16 +22,6 @@ public class Enrollment {
     public Course getCourse() {
         return course;
     }
-
-    public void addGrade(double grade, Course course) {
-        if(grade >= 0 && grade <= 100){
-            this.grade = grade;
-            return;
-        }
-        else{
-            System.out.println("Error: Grade cannot be less than 0 or more than 100");
-        }
-    }
  
     public void displayEnrollment(){
         System.out.println("Student: " + student.getName() + " (" + student.getStudentId() + ")");
