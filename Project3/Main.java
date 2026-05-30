@@ -80,6 +80,10 @@ public class Main {
             System.out.println("6- Enter/Update Grade");
             System.out.println("7- Display Student Transcript");
             System.out.println("8- Display All Students and Courses");
+            System.out.println("9- Display All Students Recently Added");
+            System.out.println("10- Display All Courses Recently Added");
+            System.out.println("11- Update Student In Memory");
+            System.out.println("12- Update Course In Memory");
             System.out.println("Enter any other number to exit");
             System.out.print("Enter your choice: ");
 
@@ -89,7 +93,7 @@ public class Main {
                 scanner.nextLine();//this is common practice
 
                 if (choice == 1) {
-                    System.out.print("Enter Student ID: ");
+                    System.out.print("Enter ID: ");
                     String id = scanner.nextLine();
                     System.out.print("Enter Name: ");
                     String name = scanner.nextLine();
@@ -97,18 +101,22 @@ public class Main {
                     String email = scanner.nextLine();
                     System.out.print("Enter Major: ");
                     String major = scanner.nextLine();
-                    StudentManagementSystems.addStudent(new Student(id, name, email, id, major));
+                    System.out.print("Enter Student ID: ");
+                    String studentId = scanner.nextLine();
+                    StudentManagementSystems.addStudent(new Student(id, name, email, studentId, major));
 
                 } 
+
                 else if (choice == 2) {
                     System.out.print("Enter Course Code: ");
                     String code = scanner.nextLine();
                     System.out.print("Enter Course Title: ");
                     String title = scanner.nextLine();
                     System.out.print("Enter Credit Hours: ");
-                    int credits = Integer.parseInt(scanner.nextLine().trim());
+                    int credits = Integer.parseInt(scanner.nextLine().trim());//to avoid scanner skipping bug
                     StudentManagementSystems.addCourse(new Course(code, title, credits));
                 }
+
                 else if (choice == 3) {
                     System.out.print("Enter Student ID to delete: ");
                     String studentId = scanner.nextLine();
@@ -129,6 +137,7 @@ public class Main {
                     StudentManagementSystems.enrollStudent(studentId, courseCode);
 
                 } 
+
                 else if (choice == 6) {
                     System.out.print("Enter Student ID: ");
                     String studentId = scanner.nextLine();
@@ -139,17 +148,47 @@ public class Main {
                     StudentManagementSystems.enterGrade(studentId, courseCode, grade);
 
                 } 
+
                 else if (choice == 7) {
                     System.out.print("Enter Student ID: ");
                     String studentId = scanner.nextLine();
                     StudentManagementSystems.displayTranscript(studentId);
-
                 }
+
                 else if (choice == 8) {
                     StudentManagementSystems.displayReport();
-
                 } 
-                
+
+                else if (choice == 9) {
+                    StudentManagementSystems.displayStudentsAdded();
+                } 
+
+                else if (choice == 10) {
+                    StudentManagementSystems.displayCoursesAdded();
+                }
+
+                else if (choice == 11) {
+                    System.out.print("Enter Student ID: ");
+                    String studentId = scanner.nextLine();
+                    System.out.print("Enter Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Enter Email: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Enter Major: ");
+                    String major = scanner.nextLine();
+                    StudentManagementSystems.updateStudentAdded(studentId, name, email, major);
+                } 
+
+                else if (choice == 12) {
+                    System.out.print("Enter Course Code: ");
+                    String code = scanner.nextLine();
+                    System.out.print("Enter Course Title: ");
+                    String title = scanner.nextLine();
+                    System.out.print("Enter Credit Hours: ");
+                    int credits = Integer.parseInt(scanner.nextLine().trim());//to avoid scanner skipping bug
+                    StudentManagementSystems.updateCourseAdded(code, title, credits);
+                }
+
                 else {
                     System.out.println("Exited");
                     scanner.close();

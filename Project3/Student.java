@@ -18,4 +18,11 @@ public class Student extends Person{
         return studentId;
     }
 
+    public void setMajor(String major){
+        this.major = major;
+    }
+
+    public void setStudentId(String studentId){
+        this.studentId = studentId;
+    }
 }
