@@ -2,6 +2,10 @@ package Project3;
 
 public class Course {
     private String courseCode;
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
     private String courseTitle;
     private int creditHours;
 
@@ -22,5 +26,21 @@ public class Course {
             case "PHU124" -> "The material of this course requires knowledge of differential and integral calculus. The covered material includes the basics of electricity and magnetism, electromagnetic radiation, and optics.";
             default -> "Invalid Course";
         };
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
+    }
+
+    public int getCreditHours() {
+        return creditHours;
+    }
+
+    public void setCreditHours(int creditHours) {
+        this.creditHours = creditHours;
     }
 }
