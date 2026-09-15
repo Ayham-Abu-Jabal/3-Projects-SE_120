@@ -27,6 +27,8 @@ javac *.java
 java Main
 ```
 Or open the `Project2` folder in your IDE and run `Main.java`.
+
+(USed Netbeans with JDK 8 for this one)
  
 > Data is stored in memory only, so it's lost when the program closes.
  
